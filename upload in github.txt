@@ -1,0 +1,137 @@
+#summary
+1-git init
+2-git config --global core.autocrlf false
+3-git config --global user.email "you@example.com"
+4-git config --global user.name "Your Name"
+5-git add .
+6-git commit -m "اي كومينت"
+7-git remote add origin https://github.com/mohamed-ameer/college.git
+8-git push -u origin master
+============================
+1-git init
+2-git add .
+3-git commit -m "اي كومينت"
+4-git remote add origin https://github.com/mohamed-ameer/college.git
+5-git push -u origin master
+
+#############################################
+Uploading Files To GitHub Quick Start Guide:
+[https://www.youtube.com/watch?v=qMck70tLDuo&ab_channel=DennisIvy]
+
+(the summary):
+1-روح جوا الفولدر اللي جواه الملفات او الفولدرات اللي عايز ترفعها
+2-cmd روح امسح الباث فوق واكتب 
+3->>git init
+4->>git status    ====>[عشان تشوف ايه الملفات اللي هتترفع مش اكتر]
+5->>git add .     
+6->>git commit -m "اي كومينت"
+7-git status (تاني commit اتاكد ان مفيش )
+8-git remote add origin https://github.com/mohamed-ameer/college.git
+9-git push -u origin master
+
+#############################################
+1-rightclick + open git bash
+2-git init
+3-git status
+4-git config --global core.autocrlf false
+5-git add .(لو الملف كبير استني حبه)
+6-git commit -m "اي كومينت"
+7-git status (تاني commit اتاكد ان مفيش )
+8-git remote add origin https://github.com/mohamed-ameer/college.git
+9-git push -u origin master
+******************************************
+LF will be replaced by CRLF in git:
+4-git config --global core.autocrlf false
+******************************************
+Solved: Git please tell me who you are error | How to Configure Username & Email using Git Bash[https://www.youtube.com/watch?v=dRNcbhx2698&ab_channel=JavaTCoding]
+
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+git config --list 
+******************************************
+6-git commit -m "اي كومينت"
+7-git status (تاني commit اتاكد ان مفيش )
+8-git remote add origin https://github.com/mohamed-ameer/college.git
+9-git push -u origin master
+
+
+##################################################
+##################################################
+GITHUP UPDATE
+##################################################
+##################################################
+1-git status
+2-git diff
+3-git add .
+4-git commit -m "update"
+5-git push origin master --force
+##################################################
+##################################################
+{Deployment}
+##################################################
+1-open https://www.pythonanywhere.com then login
+2-open Console-->Bash 
+3-$mkvirtualenv --python=python3.6 myproj
+4-$pip install وحمل اللي عايزه requirements.txt افتح ملف ال 
+5-copy our application from github to our virtualenv
+6-$git clone https://github.com/mohamed-ameer/learn-management-system.git
+7-$ls عشان تتاكد الملفات اتحملت ولا لاء
+8-$cd روح لملف المشروع
+cd /learn-management-system/LMS
+8-py manage.py makemigrations ->migrate ...etc
+9-$pwd used to get current working directory the source code path
+/home/mohamedameer/learn-management-system/LMS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10-Configuration on the web tab:
+---------------------------------------
+Add a new web app--->Next-->
+If we want to develop a fresh application we have to select Django.
+But if we have application already then we have to select
+Manual configuration (including virtualenvs)
+Next-->Select Python Version-->Python 3.6-->Next
+Source code:
+/home/mohamedameer/learn-management-system/LMS
+Virtualenv:
+/home/mohamedameer/.virtualenvs/myproj
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11-WSGI Configuration:
+--------------------------
+click=>WSGI configuration file:/var/www/durgasoftdjango_pythonanywhere_com_wsgi.py
+In the configuration file just remove Hello World related things
+
+12-find this line
+# +++++++++++ DJANGO +++++++++++ 
+then uncomment 
+import os
+import sys
+path = 'source code path'
+if path not in sys.path:
+ sys.path.append(path)
+os.chdir(path)
+os.environ.setdefault('DJANGO_SETTINGS_MODULE','.settings')
+
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+
+13-save
+14-Configuration on the web tab then reload
+15-ERROR
+Invalid HTTP_HOST header: 'mohamedameer.pythonanywhere.com'. You may need to add 'mohamedameer.pythonanywhere.com' to ALLOWED_HOSTS.
+16-open file->->->settings.py
+17-ALLOWED_HOSTS = ['mohamedameer.pythonanywhere.com',]
+18-save 
+19-web->reload->THAT'S IT😁
+20-How to reload static files:-
+Static files related to admin site:
+-------------------------------------------
+Static files:
+URL: /static/admin
+Path: /home/mohamedameer/.virtualenvs/myproj/lib/python3.9/site-packages/django/contrib/admin/static/admin
+================================================
+Static files related to our application:
+--------------------------------------------------
+To reflect css files,js files and images used in our application we have to perform the
+following configuration under Static files:
+URL: /static
+Path: /home/mohamedameer/learn-management-system/LMS/static
